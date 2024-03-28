@@ -1,6 +1,7 @@
 ﻿using Microsoft.AspNetCore.Http.HttpResults;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
+using wepApi.DTO;
 using wepApi.Models;
 
 namespace wepApi.Controllers
@@ -26,14 +27,21 @@ namespace wepApi.Controllers
         public async Task<IActionResult> Get()
         {
 
+            //Sadece name kısmı gözükecek!!!!!
+            var Dto = await _context._products.Select(k => new ProductDTO
+            {
+                Name = k.Name
+            }
+            ).ToListAsync();
+
             var providers =await _context._products.ToListAsync();
 
-            if ( providers == null)
+            if (Dto == null)
             {
                 return StatusCode(404, "Maalef içerde veri yok!");
             }
 
-            return Ok(providers);
+            return Ok(Dto);
 
         }
 
