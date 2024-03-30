@@ -1,8 +1,9 @@
-﻿using Microsoft.EntityFrameworkCore;
+﻿using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
+using Microsoft.EntityFrameworkCore;
 
 namespace wepApi.Models
 {
-    public class ProductContext : DbContext
+    public class ProductContext : IdentityDbContext<AppUser, AppRole, int>
     {
 
  
