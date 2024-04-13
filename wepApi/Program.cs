@@ -21,10 +21,6 @@ builder.Services.AddIdentity<AppUser, AppRole>().AddEntityFrameworkStores<Produc
 
 //Þimdi de Identity Configure'larýný burada ekleyebiliriz!
 //Ýdentity ile kýsýtlamalarý burada ekleriz!!!!
-builder.Services.Configure<IdentityOptions>(options =>
-{
-    options.Password.RequiredLength = 6;
-});
 
 
 builder.Services.AddControllers();
